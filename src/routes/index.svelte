@@ -1,24 +1,32 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
-	let tgApp: TelegramWebApp;
-	onMount(() => {
-		tgApp = window.Telegram.WebApp;
-		window.Telegram.WebApp.onEvent('viewportChanged', () => {
-			tgApp = window.Telegram.WebApp;
-		});
+	import { onMount } from 'svelte';
+	let firstName: string = '';
 
-		onDestroy(() => {
-			window.Telegram.WebApp.offEvent('viewportChanged', () => {
-				tgApp = window.Telegram.WebApp;
-			});
-		});
+	onMount(() => {
+		firstName = window.Telegram.WebApp.initDataUnsafe.user.first_name || '';
 	});
+
+	function toggleMainButton() {
+		const mainButton = window.Telegram.WebApp.MainButton;
+
+		if (mainButton.isVisible) mainButton.hide();
+		else mainButton.show();
+	}
 </script>
 
-<h1>Welcome to SvelteKit</h1>
+<h1>Hello {firstName}!</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<pre>{JSON.stringify(
-		{ tgApp: typeof window !== 'undefined' ? window.Telegram.WebApp : undefined },
-		null,
-		2
-	)}</pre>
+
+<p>
+	If you are inteserted in Telegram web Bots please <a
+		href="https://core.telegram.org/bots/webapps"
+		target="_blank">click me</a
+	>
+</p>
+
+<h2>Lets look at what Telegram Web Bots can do</h2>
+
+<button on:click={toggleMainButton}>
+	<h3>Show/Hide Main Button</h3>
+</button>
+<pre />
