@@ -27,11 +27,11 @@ interface WebAppInitData {
 	hash: string;
 }
 interface MainButtonParams {
-	text: string;
-	color: string;
-	textColor: string;
-	isVisible: boolean;
-	isActive: boolean;
+	text?: string;
+	color?: string;
+	textColor?: string;
+	isVisible?: boolean;
+	isActive?: boolean;
 }
 interface TelegramMainButton extends MainButtonParams {
 	isProgressVisible: boolean;

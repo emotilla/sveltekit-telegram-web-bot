@@ -4,13 +4,21 @@
 
 	onMount(() => {
 		firstName = window.Telegram.WebApp.initDataUnsafe.user.first_name || '';
+
+		const tgApp = window.Telegram.WebApp;
+		tgApp.MainButton.setParams({ text: 'Click me to Close' });
+		tgApp.MainButton.onClick(() => tgApp.close);
 	});
 
 	function toggleMainButton() {
 		const mainButton = window.Telegram.WebApp.MainButton;
-
 		if (mainButton.isVisible) mainButton.hide();
 		else mainButton.show();
+	}
+
+	function expand() {
+		const tgApp = window.Telegram.WebApp;
+		if (tgApp.isExpanded) tgApp.expand();
 	}
 </script>
 
@@ -26,7 +34,7 @@
 
 <h2>Lets look at what Telegram Web Bots can do</h2>
 
-<button on:click={toggleMainButton}>
-	<h3>Show/Hide Main Button</h3>
-</button>
+<button on:click={toggleMainButton}> Show/Hide Main Button </button>
+
+<button on:click={expand}>Expand</button>
 <pre />
