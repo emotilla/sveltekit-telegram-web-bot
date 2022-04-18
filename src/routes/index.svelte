@@ -17,8 +17,7 @@
 	}
 
 	function expand() {
-		const tgApp = window.Telegram.WebApp;
-		if (tgApp.isExpanded) tgApp.expand();
+		window.Telegram.WebApp.expand();
 	}
 </script>
 
@@ -33,8 +32,18 @@
 </p>
 
 <h2>Lets look at what Telegram Web Bots can do</h2>
+<div class="flex">
+	<button on:click={toggleMainButton}> Show/Hide Main Button </button>
+	<button on:click={expand}>Expand</button>
+</div>
 
-<button on:click={toggleMainButton}> Show/Hide Main Button </button>
-
-<button on:click={expand}>Expand</button>
-<pre />
+<style>
+	.flex {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	button {
+		padding: 1rem;
+	}
+</style>
