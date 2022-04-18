@@ -61,7 +61,7 @@ declare global {
 		onEvent: (eventType: TelegramWebAppEvent, eventHandler: () => unknown) => void;
 		offEvent: (eventType: TelegramWebAppEvent, eventHandler: () => unknown) => void;
 		sendData: (data: unknown) => void;
-		ready: () => boolean;
+		ready: () => void;
 		expand: () => void;
 		close: () => void;
 	}
