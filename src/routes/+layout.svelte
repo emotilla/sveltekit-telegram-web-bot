@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 
-	import '../styles/global.css';
+	//import '../styles/global.css';
 	onMount(() => {
 		window.Telegram.WebApp.ready();
 	});
